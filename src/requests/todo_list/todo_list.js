@@ -6,12 +6,12 @@ const SERVER_URL = 'http://localhost:3000'
 const PATH = 'todo_list'
 
 
-export async function postTodo()
+export async function postTodo(payload)
 {
     const url = joinURL(SERVER_URL, PATH)
 
     return await axios
-        .post(url)
+        .post(url, payload)
         .then(res => res.data)
 }
 
@@ -44,12 +44,12 @@ export async function deleteTodo(todoId)
         .then(res => res.data)
 }
 
-export async function updateTodo(todoId)
+export async function updateTodo(todoId, payload)
 {
     const todoIdAsString = todoId.toString()
     const url = joinURL(SERVER_URL, PATH, todoIdAsString)
     
     return await axios
-        .put(url)
+        .put(url, payload)
         .then(res => res.data)
 }

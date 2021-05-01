@@ -1,6 +1,7 @@
 {
   "todo_list": [
     {
+      "id": 1,
       "name": "Go to the supermarket",
       "description": "The supermarket is next door",
       "tasks": [
@@ -19,6 +20,7 @@
       ]
     },
     {
+      "id": 2,
       "name": "Clean up your flat",
       "description": "to get a free mind",
       "tasks": [
