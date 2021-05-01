@@ -1,0 +1,37 @@
+{
+  "todo_list": [
+    {
+      "name": "Go to the supermarket",
+      "description": "The supermarket is next door",
+      "tasks": [
+        { 
+          "name": "Don't forget your mask",
+          "description": "Corona isn't over yet"
+        },
+        { 
+          "name": "Buy apples",
+          "description": "They're good for your health"
+        },
+        { 
+          "name": "Buy Bananas",
+          "description": "They're tasty"
+        }
+      ]
+    },
+    {
+      "name": "Clean up your flat",
+      "description": "to get a free mind",
+      "tasks": [
+        { 
+          "name": "Clean up the bath"
+        },
+        { 
+          "name": "Clean up the bedroom"
+        },
+        { 
+          "name": "Clean up the kitchen"
+        }
+      ]
+    }
+  ]
+}
