@@ -1,3 +1,4 @@
+
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
 
@@ -14,7 +15,7 @@ export default new Vuetify(
                 primary: '#2196f3',
                 secondary: '#64b5f6',
                 accent: '#2979ff',
-                error: '#f44336',
+                error: '#f44336'
             }
         }
     }

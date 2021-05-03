@@ -1,39 +1,21 @@
 {
   "todo_list": [
     {
-      "id": 1,
-      "name": "Go to the supermarket",
-      "description": "The supermarket is next door",
+      "name": "eddf",
+      "description": "",
       "tasks": [
-        { 
-          "name": "Don't forget your mask",
-          "description": "Corona isn't over yet"
+        {
+          "id": 1,
+          "name": "lkkjb",
+          "description": ""
         },
-        { 
-          "name": "Buy apples",
-          "description": "They're good for your health"
-        },
-        { 
-          "name": "Buy Bananas",
-          "description": "They're tasty"
+        {
+          "id": 2,
+          "name": "fgh",
+          "description": ""
         }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Clean up your flat",
-      "description": "to get a free mind",
-      "tasks": [
-        { 
-          "name": "Clean up the bath"
-        },
-        { 
-          "name": "Clean up the bedroom"
-        },
-        { 
-          "name": "Clean up the kitchen"
-        }
-      ]
+      ],
+      "id": 1
     }
   ]
 }
