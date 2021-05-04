@@ -51,7 +51,7 @@ export default {
 
 <template>
   <v-card class="add-todo-card">
-    <v-card-title>Adding a new Todo</v-card-title>
+    <v-card-title>Add a new Todo</v-card-title>
     <v-divider></v-divider>
     <v-card-text>
       <TodoEditor ref="todoEditor"></TodoEditor>

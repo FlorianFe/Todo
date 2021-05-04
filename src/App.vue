@@ -59,7 +59,7 @@ export default {
             elevation="2"
           > 
             It looks like our service is offline. <br>
-            You can start the "backend server" with <br>
+            As Admin you can start the "backend server" with <br>
             <code>npm run start-backend</code>
           </v-alert>   
         </template>
