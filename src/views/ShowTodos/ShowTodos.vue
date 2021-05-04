@@ -202,7 +202,7 @@ export default {
 
         <v-dialog
           v-model="tasksDialog"
-          v-if="todoList.length > 0"
+          v-if="todoList[selectedTodoIndex] != undefined"
           width="500"
         >
           <v-card>
