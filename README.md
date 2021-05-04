@@ -12,12 +12,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### To start the Backend Server 
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm run start-backend
 ```
