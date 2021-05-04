@@ -11,7 +11,7 @@ export default {
   },
   data: () =>
   ({
-    todoToEdit: null
+    todoToEdit: undefined
   }),
   mounted() 
   {
@@ -36,12 +36,16 @@ export default {
     {
       const todoEditor = this.$refs.todoEditor
       const updatedTodo = todoEditor.getTodo()
+      const isTodoValid = todoEditor.validateAndSetFocus()
 
-      updateTodo(this.$route.params.id, updatedTodo)
+      if(isTodoValid)
+      {
+        updateTodo(this.$route.params.id, updatedTodo)
         .then(() =>
         {
           this.$router.push('/')
         })
+      }
     }
   }
 }
@@ -60,24 +64,22 @@ export default {
 
 
 <template>
-  <v-container id="main-container">
-    <v-card class="add-todo-card">
-      <v-card-title>Edit Todo</v-card-title>
-      <v-divider></v-divider>
-      <v-card-text>
-        <TodoEditor v-if="todoToEdit != null" ref="todoEditor" :todo="todoToEdit"></TodoEditor>
-      </v-card-text>
-      <v-divider></v-divider>
-      
-      <v-card-actions>
-        <v-btn left color="#777777" dark text @click="close()">
-          Close
-        </v-btn>
-        <v-spacer/>
-        <v-btn right color="primary" text @click="updateTodo()">
-          Save
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-container>
+  <v-card class="add-todo-card">
+    <v-card-title>Edit Todo</v-card-title>
+    <v-divider></v-divider>
+    <v-card-text>
+      <TodoEditor ref="todoEditor" :todo="todoToEdit"></TodoEditor>
+    </v-card-text>
+    <v-divider></v-divider>
+    
+    <v-card-actions>
+      <v-btn left color="#777777" dark text @click="close()">
+        Close
+      </v-btn>
+      <v-spacer/>
+      <v-btn right color="primary" text @click="updateTodo()">
+        Save
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>

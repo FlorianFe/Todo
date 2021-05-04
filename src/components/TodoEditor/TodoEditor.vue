@@ -3,6 +3,27 @@
 
 import { remove } from 'ramda'
 
+const toEnglishOrdinalNumber = (decimal) =>
+{
+    if(decimal <= 0) 
+        throw new Error("ordering number must be positive")
+    
+    if(decimal > 3 && decimal < 21) 
+        return `${decimal}th`
+  
+    switch (decimal % 10)
+    {
+        case 1:  
+            return `${decimal}st`
+        case 2:  
+            return `${decimal}nd`
+        case 3:  
+            return `${decimal}rd`
+        default: 
+            return `${decimal}th`
+    }
+}
+
 const generateNextTaskId = (todo) =>
 {
     if(todo.tasks.length > 0)
@@ -36,7 +57,8 @@ export default {
     data: () =>
     {
         return {
-            inputError: ""
+            inputErrorMessage: "",
+            valid: true
         }
     },
     methods:
@@ -62,11 +84,49 @@ export default {
 
             this.todo.tasks = remove(indexToRemove, 1, this.todo.tasks)
         },
-        validate()
+        validateAndSetFocus()
         {
-            // this.$refs.nameField
+            const hasTodoAName = (this.todo.name.length > 0)
+            const doesEveryTaskHaveAName = this.todo.tasks.every(task => task.name.length > 0)
 
-            // TODO
+            const onInputInInvalidTextField = () => 
+            {
+                this.valid = true
+                this.inputErrorMessage = ''
+            }
+
+            if(!hasTodoAName)
+            {
+                const invalidTextField = this.$refs.nameField
+
+                invalidTextField.focus()
+                invalidTextField.$el.addEventListener('input', onInputInInvalidTextField, { once : true})
+                
+                this.valid = false
+                this.inputErrorMessage = `The "Name"-Field of a Todo is mandatory`
+
+                return this.valid
+            }
+
+            if(!doesEveryTaskHaveAName)
+            {
+                const validationOfTaskNames = this.todo.tasks.map((task) => task.name.length > 0)
+                const indexOfFirstInvalidTask = validationOfTaskNames.indexOf(false)
+                const invalidTextField = this.$refs.taskNameFields[indexOfFirstInvalidTask]
+
+                invalidTextField.focus()
+                invalidTextField.$el.addEventListener('input', onInputInInvalidTextField, { once : true})
+
+                this.valid = false
+                this.inputErrorMessage = `The ${toEnglishOrdinalNumber(indexOfFirstInvalidTask + 1)} Task is missing a name`
+
+                return this.valid
+            }
+
+            this.valid = true
+            this.inputErrorMessage = ``
+
+            return this.valid
         },
         getTodo() 
         {
@@ -79,7 +139,13 @@ export default {
 
 <style scoped>
 
-.btn-add-task
+h2
+{
+  text-align: left;
+  font-weight: normal;
+}
+
+.full-width
 {
   width: 100%;
 }
@@ -88,11 +154,6 @@ export default {
 {
   padding: 15px;
   margin-bottom: 30px;
-}
-
-h2
-{
-  text-align: left;
 }
 
 </style>
@@ -112,45 +173,49 @@ h2
 
         <br>
 
-        <h2>Tasks:</h2>
+        <h2>Tasks</h2>
 
         <br>
 
         <v-card 
-        class="task-card" 
-        v-for="task in todo.tasks" 
-        v-bind:key="task.id"
+            class="task-card" 
+            v-for="task in todo.tasks" 
+            v-bind:key="task.id"
         >
             <v-text-field
                 label="Name"
                 v-model="task.name"
+                ref="taskNameFields"
             ></v-text-field>
             <v-text-field 
                 label="Description (optional)"
                 v-model="task.description"
             ></v-text-field>
-            <v-btn @click="deleteTaskById(task.id)">
-                Delete Task
-            </v-btn>
+            <div class="text-right">
+                <v-btn @click="deleteTaskById(task.id)" align="right">
+                    Delete Task
+                </v-btn>
+            </div>
         </v-card>
 
         <v-btn 
-            class="btn-add-task"
+            class="full-width"
+            color="primary"
             @click="addTask()"
         >
-            +
+            <v-icon>mdi-plus</v-icon>
         </v-btn>
 
         <br><br>
 
         <v-alert 
-            v-if="inputError.length > 0"
+            v-if="!valid"
             border="right"
             colored-border
             type="error"
             elevation="2"
         > 
-            {{inputError}}
+            {{inputErrorMessage}}
         </v-alert>
     </div>
 </template>

@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "json-server": "^0.16.3",
+    "lodash": "^4.17.21",
     "minisearch": "^3.0.2",
     "ramda": "^0.27.1",
     "url-join": "^4.0.1",

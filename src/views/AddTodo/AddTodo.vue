@@ -10,12 +10,6 @@ export default {
   components: {
     TodoEditor
   },
-  data: () =>
-  {
-    return {
-      inputError: ""
-    }
-  },
   mounted() 
   {
     this.$refs.todoEditor.focusTodoNameField() 
@@ -28,25 +22,18 @@ export default {
     },
     createTodo()
     {
-      this.inputError = ""
-
-      /*
-      if(this.$refs.nameField.value.length <= 0) 
-      {
-        this.inputError = "Name Field is mandatory!"
-        this.$refs.todoEditor.focusTodoNameField() 
-        return
-      }
-      */
-
       const todoEditor = this.$refs.todoEditor
       const todoToConstruct = todoEditor.getTodo()
+      const isTodoValid = todoEditor.validateAndSetFocus()
 
-      postTodo(todoToConstruct)
-        .then(() =>
-        {
-          this.$router.push('/')
-        })
+      if(isTodoValid)
+      {
+        postTodo(todoToConstruct)
+          .then(() =>
+          {
+            this.$router.push('/')
+          })
+      }
     }
   }
 }
@@ -63,24 +50,22 @@ export default {
 </style>
 
 <template>
-  <v-container id="main-container">
-    <v-card class="add-todo-card">
-      <v-card-title>Adding a new Todo</v-card-title>
-      <v-divider></v-divider>
-      <v-card-text>
-        <TodoEditor ref="todoEditor"></TodoEditor>
-      </v-card-text>
-      <v-divider></v-divider>
-      
-      <v-card-actions>
-        <v-btn left color="#777777" dark text @click="close()">
-          Close
-        </v-btn>
-        <v-spacer/>
-        <v-btn right color="primary" text @click="createTodo()">
-          Save
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-container>
+  <v-card class="add-todo-card">
+    <v-card-title>Adding a new Todo</v-card-title>
+    <v-divider></v-divider>
+    <v-card-text>
+      <TodoEditor ref="todoEditor"></TodoEditor>
+    </v-card-text>
+    <v-divider></v-divider>
+    
+    <v-card-actions>
+      <v-btn left color="#777777" dark text @click="close()">
+        Close
+      </v-btn>
+      <v-spacer/>
+      <v-btn right color="primary" text @click="createTodo()">
+        Save
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
