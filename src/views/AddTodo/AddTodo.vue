@@ -33,6 +33,10 @@ export default {
           {
             this.$router.push('/')
           })
+          .catch((e) => 
+          {
+            console.error(e)
+          })
       }
     }
   }
@@ -50,7 +54,7 @@ export default {
 </style>
 
 <template>
-  <v-card class="add-todo-card">
+  <v-card>
     <v-card-title>Add a new Todo</v-card-title>
     <v-divider></v-divider>
     <v-card-text>

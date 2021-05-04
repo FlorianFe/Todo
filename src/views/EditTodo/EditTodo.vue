@@ -16,14 +16,15 @@ export default {
   mounted() 
   {
     getTodo(this.$route.params.id)
-      .then(todo => {
+      .then(todo => 
+      {
         this.todoToEdit = todo
         console.log(this.todoToEdit)
       })
       .catch(e => 
       {
-        console.warn(e)
-        this.offline = true
+        console.error(e)
+        this.$router.push('/')
       }) 
   },
   methods: 
@@ -45,6 +46,10 @@ export default {
         {
           this.$router.push('/')
         })
+        .catch(e => 
+        {
+          console.error(e)
+        }) 
       }
     }
   }
@@ -64,7 +69,7 @@ export default {
 
 
 <template>
-  <v-card class="add-todo-card">
+  <v-card>
     <v-card-title>Edit Todo</v-card-title>
     <v-divider></v-divider>
     <v-card-text>
