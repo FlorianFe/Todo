@@ -48,7 +48,7 @@ export async function updateTodo(todoId, payload)
 {
     const todoIdAsString = todoId.toString()
     const url = joinURL(SERVER_URL, PATH, todoIdAsString)
-    
+
     return await axios
         .put(url, payload)
         .then(res => res.data)

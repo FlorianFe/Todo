@@ -130,7 +130,26 @@ export default {
         },
         getTodo() 
         {
-            return this.todo;
+            let result = { name: this.todo.name }
+
+            if(this.todo.description != null && this.todo.description.length > 0)
+            {
+                result.description = this.todo.description
+            }
+
+            result.tasks = this.todo.tasks.map(task => 
+            {
+                let resultTask = { id: task.id, name: task.name }
+
+                if(task.description != null && task.description.length > 0)
+                {
+                    resultTask.description = task.description
+                }
+
+                return resultTask
+            })
+
+            return result
         }
     }
 }

@@ -2,7 +2,6 @@
   "todo_list": [
     {
       "name": "Go to the Supermarket",
-      "description": "",
       "tasks": [
         {
           "id": 1,
@@ -11,35 +10,29 @@
         },
         {
           "id": 2,
-          "name": "Buy Apples",
-          "description": ""
+          "name": "Buy Apples"
         },
         {
           "id": 3,
-          "name": "Buy Bananas",
-          "description": ""
+          "name": "Buy Bananas"
         }
       ],
       "id": 1
     },
     {
       "name": "Clean up your flat",
-      "description": "",
       "tasks": [
         {
           "id": 1,
-          "name": "Clean up the kitchen",
-          "description": ""
+          "name": "Clean up the kitchen"
         },
         {
           "id": 2,
-          "name": "Clean up the bedroom",
-          "description": ""
+          "name": "Clean up the bedroom"
         },
         {
           "id": 3,
-          "name": "Clean up the bath",
-          "description": ""
+          "name": "Clean up the bath"
         }
       ],
       "id": 2
