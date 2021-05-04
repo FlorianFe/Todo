@@ -3,6 +3,8 @@
 a simple todo app build with vue.js
 
 ## 🚀 Project setup
+
+### To install dependencies
 ```
 npm install
 ```
