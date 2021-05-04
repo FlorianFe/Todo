@@ -1,6 +1,6 @@
 # TODO
 
-a simple todo app build with vue.js
+a simple mobile optimized (400x600) todo app build with vue.js
 
 ## 🚀 Project setup
 
